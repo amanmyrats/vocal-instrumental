@@ -127,7 +127,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+pretrained_models/
+output/
 # Spyder project settings
 .spyderproject
 .spyproject

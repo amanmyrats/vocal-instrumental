@@ -1,0 +1,55 @@
+<h1>
+    test <br>
+    {{ test }}
+</h1>
+
+<form method="post" enctype="multipart/form-data" id="upload-form">
+    {% csrf_token %}
+    <input type="file">
+    <button type="button" id="send-button">Send</button>
+</form>
+
+<script>
+    // Add a click event listener to the button
+    document.getElementById('send-button').addEventListener('click', function() {
+        event.preventDefault();
+        // Get the file to upload
+        const fileInput = document.querySelector('input[type="file"]');
+        const file = fileInput.files[0];
+
+        // Create a FormData object
+        const formData = new FormData();
+
+        // Add the file to the FormData object
+        formData.append('file', file);
+
+        // Create an XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+
+        // Set the request method and URL
+        xhr.open('POST', 'http://localhost:8000/api/v1/separate');
+
+        // Send the request
+        xhr.send(formData);
+
+        // Listen for the response
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // The request was successful
+                const response = JSON.parse(xhr.responseText);
+                console.log("successful");
+                console.log(response);
+                // Get the paths to the separated vocals and music
+                const vocalsPath = response.vocals;
+                const accompanimentPath = response.accompaniment;
+
+                // Play the separated vocals and music
+                // ...
+            } else {
+                // The request failed
+                console.log("error happened");
+                console.error(xhr.statusText);
+            }
+        };
+    });
+</script>
