@@ -1,66 +1,67 @@
 <h1>
-    test <br>
+    Test <br>
     {{ test }}
 </h1>
 
 <form method="post" enctype="multipart/form-data" id="upload-form">
     {% csrf_token %}
-    <input type="file">
+    <input type="file" id="file-input">
     <button type="button" id="send-button">Send</button>
 </form>
 
+<audio id="vocals-audio" controls style="display:none;"></audio>
+<audio id="accompaniment-audio" controls style="display:none;"></audio>
+
 <script>
-    // Add a click event listener to the button
     document.getElementById('send-button').addEventListener('click', function () {
         event.preventDefault();
-        // Get the file to upload
-        const fileInput = document.querySelector('input[type="file"]');
+
+        const fileInput = document.getElementById('file-input');
         const file = fileInput.files[0];
 
-        // Create a FormData object
         const formData = new FormData();
-
-        // Add the file to the FormData object
         formData.append('file', file);
 
-        // Create an XMLHttpRequest object
         const xhr = new XMLHttpRequest();
-
-        // Set the request method and URL
         xhr.open('POST', 'http://localhost:8000/api/v1/separate');
+        xhr.responseType = 'json';
 
-        // Set the response type to 'blob' to handle binary data
-        xhr.responseType = 'blob';
-
-        // Send the request
         xhr.send(formData);
 
-        // Listen for the response
         xhr.onload = function () {
             if (xhr.status === 200) {
-                // The request was successful
-                console.log("successful");
+                const jsonResponse = xhr.response;
 
-                // Create a URL for the ZIP blob
-                const zipBlob = xhr.response;
-                const zipUrl = URL.createObjectURL(zipBlob);
+                // Decode Base64 content
+                const vocalsBlob = base64toBlob(jsonResponse.vocals, 'audio/wav');
+                const accompanimentBlob = base64toBlob(jsonResponse.accompaniment, 'audio/wav');
 
-                // Create a download link for the ZIP file
-                const downloadLink = document.createElement('a');
-                downloadLink.href = zipUrl;
-                downloadLink.download = 'separated_audio.zip';
-                downloadLink.textContent = 'Download Separated Audio';
+                // Create Blob URLs for the binary content
+                const vocalsBlobUrl = URL.createObjectURL(vocalsBlob);
+                const accompanimentBlobUrl = URL.createObjectURL(accompanimentBlob);
 
-                // Append the download link to the page
-                document.body.appendChild(downloadLink);
+                // Set the audio sources
+                document.getElementById('vocals-audio').src = vocalsBlobUrl;
+                document.getElementById('accompaniment-audio').src = accompanimentBlobUrl;
 
-                // Click the download link to trigger the download
-                downloadLink.click();
+                // Show the audio players
+                document.getElementById('vocals-audio').style.display = 'block';
+                document.getElementById('accompaniment-audio').style.display = 'block';
             } else {
-                // The request failed
-                console.log("error happened");
                 console.error(xhr.statusText);
             }
         };
     });
+
+    function base64toBlob(base64, mimeType) {
+        const byteString = atob(base64);
+        const arrayBuffer = new ArrayBuffer(byteString.length);
+        const int8Array = new Uint8Array(arrayBuffer);
+
+        for (let i = 0; i < byteString.length; i++) {
+            int8Array[i] = byteString.charCodeAt(i);
+        }
+
+        return new Blob([arrayBuffer], { type: mimeType });
+    }
 </script>
