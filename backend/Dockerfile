@@ -9,7 +9,8 @@ COPY . /app
 
 # Install system dependencies for libsndfile
 RUN apt-get update && \
-    apt-get install -y ffmpeg autoconf autogen automake build-essential libasound2-dev \
+    apt-get install -y ffmpeg && \
+    apt-get install -y autoconf autogen automake build-essential libasound2-dev \
                        libflac-dev libogg-dev libtool libvorbis-dev libopus-dev \
                        libmp3lame-dev libmpg123-dev pkg-config python3
 
