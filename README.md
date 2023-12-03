@@ -15,7 +15,7 @@ Separating vocal and instrumental, with django backend and angular frontend. Spl
 _______________________________________________________________________
 
 
-- WITH LOCAL DEV SERVER
+- WITH LOCAL DEV SERVER(not recommended, use docker instead)
 
 1- This is written with python version 3.8.10. So any python of version 3.8.xx should be OK.
 
