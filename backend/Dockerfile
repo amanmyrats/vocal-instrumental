@@ -18,8 +18,6 @@ RUN apt-get update && \
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
-# RUN source venv/bin/activate
-# CMD ["source", "venv/bin/activate"]
 
 # Expose the port that Django will run on
 EXPOSE 8000
