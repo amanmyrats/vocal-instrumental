@@ -24,8 +24,11 @@ jobs:
           password: ${{ env.DOCKER_PASSWORD }}
 
       - name: Build Docker images
-        run: docker compose -f backend/docker-compose.yml build --build-arg IMAGE_NAME=my-custom-image-name
+      - name: Build and Push Docker images
+        run: docker-compose -f backend/docker-compose.yml build && docker-compose -f backend/docker-compose.yml push
+
+        # run: docker compose -f backend/docker-compose.yml build --build-arg IMAGE_NAME=my-custom-image-name
         # run: docker compose -f backend/docker-compose.yml build --build-arg IMAGE_NAME=my-custom-image-name
 
-      - name: Push Docker images
-        run: docker compose -f backend/docker-compose.yml push
+      # - name: Push Docker images
+      #   run: docker compose -f backend/docker-compose.yml push
