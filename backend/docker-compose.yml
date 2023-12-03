@@ -4,6 +4,6 @@ services:
   django-backend:
     build:
       context: ./
-    image: docker.io/amanmyrats/vocal_instrumental:latest
+    image: amanmyrats/vocal_instrumental:latest
     ports:
       - "8000:8000"

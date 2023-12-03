@@ -17,8 +17,9 @@ RUN apt-get update && \
                        libmp3lame-dev libmpg123-dev pkg-config python3
 
 # Install any needed packages specified in requirements.txt
-# RUN pip install -r requirements.txt
-RUN source venv/bin/activate
+RUN pip install -r requirements.txt
+# RUN source venv/bin/activate
+# CMD ["source", "venv/bin/activate"]
 
 # Expose the port that Django will run on
 EXPOSE 8000
