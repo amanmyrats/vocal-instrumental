@@ -22,6 +22,12 @@ jobs:
         with:
           username: ${{ env.DOCKER_USERNAME }}
           password: ${{ env.DOCKER_PASSWORD }}
+          
+      - name: Logout from Docker Hub
+        run: docker logout
+
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push Docker images
         run: docker-compose -f backend/docker-compose.yml build && docker-compose -f backend/docker-compose.yml push
