@@ -2,6 +2,7 @@
 Separating vocal and instrumental, with django backend and angular frontend. Spleeter library is used to do this.
 
 - WITH DOCKER
+
 1 - Be sure that you have docker in your system. If you don't please visit installation page for docker: https://docs.docker.com/engine/install/
 
 
@@ -11,7 +12,11 @@ Separating vocal and instrumental, with django backend and angular frontend. Spl
 
 3 - Open any browser and navigate to 127.0.0.1:8000/
 
+_______________________________________________________________________
+
+
 - WITH LOCAL DEV SERVER
+
 1- This is written with python version 3.8.10. So any python of version 3.8.xx should be OK.
 
 
