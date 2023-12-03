@@ -1,5 +1,7 @@
 # Use an official Python runtime as a parent image
+ARG IMAGE_NAME=vocal_instrumental
 FROM python:3.8
+LABEL maintainer="Amanmyrat Soyunjalyyev <amansarahs@gmail.com>"
 
 # Set the working directory in the container
 WORKDIR /app
