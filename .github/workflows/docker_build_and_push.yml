@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: docker-image
-          path: ${{ steps.build-image.outputs.docker-image }}
+          path: ${{ steps.build-image.outputs.artifact }}
