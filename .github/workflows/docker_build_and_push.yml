@@ -27,10 +27,7 @@ jobs:
 
       - name: Tag Docker images for Docker Hub
         run: |
-          for service in $(docker-compose -f backend/docker-compose.yml config --services); do
-            image=${{ env.DOCKER_USERNAME }}/$service:latest
-            docker tag ${image}
-          done
+          docker tag amanmyrats/vocal_instrumental:latest ${{ env.DOCKER_USERNAME }}/vocal_instrumental:latest
 
       - name: Push Docker images to Docker Hub
         run: docker-compose -f backend/docker-compose.yml push
