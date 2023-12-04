@@ -31,8 +31,9 @@ jobs:
           push: true
           tags: amanmyrat/vocal_instrumental:latest
 
-      - name: Upload image artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: docker-image
-          path: ${{ steps.build-image.outputs.artifact }}
+      # - name: Upload image artifacts
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: docker-image
+      #     path: ${{ steps.build-image.outputs.artifact }}
+
