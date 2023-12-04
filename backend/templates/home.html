@@ -9,12 +9,22 @@
     <button type="button" id="send-button">Send</button>
 </form>
 
+<p id="loading-message" style="display:none;">Working on it, please wait...</p>
+
 <audio id="vocals-audio" controls style="display:none;"></audio>
 <audio id="accompaniment-audio" controls style="display:none;"></audio>
 
 <script>
     document.getElementById('send-button').addEventListener('click', function () {
         event.preventDefault();
+
+        // Disable the button
+        const sendButton = document.getElementById('send-button');
+        sendButton.disabled = true;
+
+        // Show loading message
+        const loadingMessage = document.getElementById('loading-message');
+        loadingMessage.style.display = 'block';
 
         const fileInput = document.getElementById('file-input');
         const file = fileInput.files[0];
@@ -29,6 +39,12 @@
         xhr.send(formData);
 
         xhr.onload = function () {
+            // Re-enable the button
+            sendButton.disabled = false;
+
+            // Hide loading message
+            loadingMessage.style.display = 'none';
+
             if (xhr.status === 200) {
                 const jsonResponse = xhr.response;
 
