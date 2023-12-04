@@ -1,5 +1,4 @@
-workflow:
-  name: Docker Compose Build and Push
+name: Docker Compose Build and Push
 
 on:
   push:
