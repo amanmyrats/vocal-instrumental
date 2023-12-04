@@ -1,0 +1,10 @@
+# Ignore general development files
+*.pyc
+*.swp
+.coverage
+.idea/
+build/
+db.sqlite3
+env/
+.venv/
+local_settings.py
