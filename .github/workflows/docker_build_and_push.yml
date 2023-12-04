@@ -29,7 +29,7 @@ jobs:
           context: .
           file: ./backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/vocal_instrumental:latest
+          tags: amanmyrats/vocal_instrumental:latest
 
       - name: Upload image artifacts
         uses: actions/upload-artifact@v3
