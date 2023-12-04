@@ -29,7 +29,7 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: amanmyrats/vocal_instrumental:latest
+          tags: amanmyrat/vocal_instrumental:latest
 
       - name: Upload image artifacts
         uses: actions/upload-artifact@v3
