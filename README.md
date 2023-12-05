@@ -1,7 +1,26 @@
 # vocal-instrumental
 Separating vocal and instrumental, with django backend and angular frontend. Spleeter library is used to do this.
 
-- WITH DOCKER
+- WITH DOCKER IMAGE FROM DOCKERHUB
+
+1 - Be sure that you have docker in your system. If you don't please visit installation page for docker: https://docs.docker.com/engine/install/
+
+
+2 - Pull image from docker with: 
+    ```docker pull amanmyrat/vocal_instrumental```
+
+
+3 - Run container with exposing port 8000:8000
+    ```docker run -p 8000:8000 amanmyrat/vocal_instrumental```
+
+
+4 - Open any browser and navigate to 127.0.0.1:8000/
+
+
+_______________________________________________________________________
+
+
+- WITH DOCKER 
 
 1 - Be sure that you have docker in your system. If you don't please visit installation page for docker: https://docs.docker.com/engine/install/
 
