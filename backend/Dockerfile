@@ -16,6 +16,9 @@ RUN apt-get update && \
                        libflac-dev libogg-dev libtool libvorbis-dev libopus-dev \
                        libmp3lame-dev libmpg123-dev pkg-config python3
 
+# Upgrade pip before installing any other packages
+RUN pip install --upgrade pip
+python -m pip install tensorflow-metal
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
