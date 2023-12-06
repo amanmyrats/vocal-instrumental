@@ -17,8 +17,8 @@ RUN apt-get update && \
                        libmp3lame-dev libmpg123-dev pkg-config python3
 
 # Upgrade pip before installing any other packages
-RUN pip install --upgrade pip
-RUN pip install tensorflow>=2.4.0
+# RUN pip install --upgrade pip
+# RUN pip install tensorflow>=2.4.0
 
 # RUN python -m pip install tensorflow-metal
 # Install any needed packages specified in requirements.txt

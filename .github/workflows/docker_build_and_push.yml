@@ -22,23 +22,23 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # - name: Build Docker image
-      #   id: build-image
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     context: ./backend
-      #     file: ./backend/Dockerfile
-      #     push: true
-      #     tags: amanmyrat/vocal_instrumental:latest
-      - name: Build Docker image for linux/arm64/v8
-        id: build-arm-image
+      - name: Build Docker image
+        id: build-image
         uses: docker/build-push-action@v3
         with:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: amanmyrat/vocal_instrumental:linux.arm64.v8
-          platforms: linux/arm64/v8
+          tags: amanmyrat/vocal_instrumental:latest
+      # - name: Build Docker image for linux/arm64/v8
+      #   id: build-arm-image
+      #   uses: docker/build-push-action@v3
+      #   with:
+      #     context: ./backend
+      #     file: ./backend/Dockerfile
+      #     push: true
+      #     tags: amanmyrat/vocal_instrumental:linux.arm64.v8
+      #     platforms: linux/arm64/v8
 
       # - name: Upload image artifacts
       #   uses: actions/upload-artifact@v3
