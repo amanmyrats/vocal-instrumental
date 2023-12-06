@@ -18,7 +18,7 @@ RUN apt-get update && \
 
 # Upgrade pip before installing any other packages
 RUN pip install --upgrade pip
-RUN python -m pip install tensorflow-metal
+# RUN python -m pip install tensorflow-metal
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
