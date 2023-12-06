@@ -37,7 +37,7 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: amanmyrat/vocal_instrumental:linux/arm64/v8
+          tags: amanmyrat/vocal_instrumental:linux.arm64.v8
           platforms: linux/arm64/v8
 
       # - name: Upload image artifacts
